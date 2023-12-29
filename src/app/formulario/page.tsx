@@ -47,29 +47,39 @@ const App = () => {
     };
  }, []);
 
- const sendData = async () => {
-    if (!nym) {
-      console.warn("Nym client is not initialized. Please wait for connection.");
-      return;
-    }
-    const data = {
-      email: email,
-      name: name,
-      lastName: lastName,
-      Genero: [gender],
-      message: message
-    };
+ const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
+   event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
-    
-    const payload = {
+   if (!nym) {
+     console.warn("El cliente Nym no está inicializado. Por favor, espera la conexión.");
+     return;
+   }
+
+   const data = {
+     email: email,
+     name: name,
+     lastName: lastName,
+     gender: gender,
+     message: message
+   };
+
+   const payload: SendConfig = {
+    payload: {
       mimeType: "text/plain",
-      data: Buffer.from(JSON.stringify(data)),
-    };
+      message: Buffer.from(JSON.stringify(data)).toString('base64'), // Asumiendo que 'message' es la propiedad correcta y que se espera una cadena en base64
+    },
+    recipient: 'recipient@example.com', // Reemplaza con el destinatario real
+    customData: {}, // Datos adicionales si es necesario
+  };
 
-    // Crear un nuevo registro en la base de datos
-
-    const record = await pb.collection('formulario').create(data);
-};
+   // Crear un nuevo registro en la base de datos
+   try {
+     const record = await pb.collection('formulario').create(data);
+     console.log('Registro creado con éxito:', record);
+   } catch (error) {
+     console.error('Error al crear el registro:', error);
+   }
+ };
 
  return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-800">
@@ -123,7 +133,6 @@ const App = () => {
      
  );
 
-};
+}
+ export default App;
 
-
-export default App;
