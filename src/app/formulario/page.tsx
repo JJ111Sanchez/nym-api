@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import PocketBase from 'pocketbase';
 import {
  createNymMixnetClient,
  NymMixnetClient,
@@ -7,6 +8,11 @@ import {
 } from "@nymproject/sdk-full-fat";
 
 const nymApiUrl = "https://validator.nymtech.net/api";
+
+const pb = new PocketBase('https://cyberguenza.pockethost.io');
+
+
+
 
 interface SendConfig {
  payload: Payload;
@@ -46,23 +52,24 @@ const App = () => {
       console.warn("Nym client is not initialized. Please wait for connection.");
       return;
     }
-
     const data = {
       email: email,
       name: name,
       lastName: lastName,
-      gender: gender,
+      Genero: [gender],
       message: message
     };
 
-    // Convertir los datos del formulario a un objeto Payload
+    
     const payload = {
       mimeType: "text/plain",
       data: Buffer.from(JSON.stringify(data)),
     };
 
-   
- };
+    // Crear un nuevo registro en la base de datos
+
+    const record = await pb.collection('formulario').create(data);
+};
 
  return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-800">
@@ -113,7 +120,10 @@ const App = () => {
         <button type="submit" className="w-full px-3 py-2 text-white bg-purple-600 rounded-md hover:bg-purple-700">Enviar</button>
       </form>
     </div>
+     
  );
+
 };
+
 
 export default App;
