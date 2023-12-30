@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import Hero from "./hero/page";
 
 import {
  createNymMixnetClient,
@@ -65,6 +66,7 @@ const App = () => {
 
 
   <main>
+    <Hero />
    
     <div className="flex flex-col items-center justify-center p-4 text-black">
       <h1 className="text-orange-400 pb-4">Formulario de registro</h1>
