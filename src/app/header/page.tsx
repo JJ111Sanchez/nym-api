@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 
 
@@ -7,9 +8,9 @@ const Header = () => {
   return (
     <header className="bg-gray-900 text-green-400 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold">
+        <a href="/"><h1 className="text-3xl font-bold">
           Cyber<span className="text-pink-600">Punk</span>Header
-        </h1>
+        </h1></a>
         <div className="md:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? (
@@ -29,7 +30,7 @@ const Header = () => {
         <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <li><a href="#" className="hover:text-pink-600">Inicio</a></li>
-            <li><a href="#" className="hover:text-pink-600">Sobre</a></li>
+            <li><a href="/formulario" className="hover:text-pink-600">Formulario</a></li>
             <li><a href="#" className="hover:text-pink-600">Servicios</a></li>
             <li><a href="#" className="hover:text-pink-600">Contacto</a></li>
           </ul>
