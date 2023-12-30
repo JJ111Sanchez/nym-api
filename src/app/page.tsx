@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
+import Header from "./header/page";
 import {
  createNymMixnetClient,
  NymMixnetClient,
@@ -61,6 +62,10 @@ const App = () => {
  };
 
  return (
+
+
+  <main>
+    <Header />
     <div className="flex flex-col items-center justify-center p-4 text-black">
       <h1 className="text-orange-400 pb-4">Formulario de registro</h1>
 
@@ -97,6 +102,11 @@ const App = () => {
         </div>
       </form>
     </div>
+
+    <div>
+      
+    </div>
+    </main>
  );
 };
 
