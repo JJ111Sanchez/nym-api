@@ -29,6 +29,7 @@ const App = () => {
  const [lastName, setLastName] = useState("");
  const [gender, setGender] = useState("");
  const [message, setMessage] = useState("");
+ const [statusMessage, setStatusMessage] = useState(""); // Estado para almacenar el mensaje de estado del envío
 
  const init = async () => {
     const client = await createNymMixnetClient();
@@ -78,8 +79,16 @@ const App = () => {
    try {
      const record = await pb.collection('formulario').create(data);
      console.log('Registro creado con éxito:', record);
+     setStatusMessage("Mensaje enviado por la mixnet"); // Establece el mensaje de estado después de un envío exitoso
+     // Limpia los campos del formulario después de enviar
+     setEmail("");
+     setName("");
+     setLastName("");
+     setGender("");
+     setMessage("");
    } catch (error) {
      console.error('Error al crear el registro:', error);
+     setStatusMessage("Error al enviar el mensaje"); // Establece el mensaje de estado en caso de error
    }
  };
 
@@ -97,6 +106,7 @@ alt="sizas">
 </Image>
     
 </div>
+      {statusMessage && <p className="text-white  text-center text-2xl font-bold pt-4 pb-4 ">{statusMessage}</p>} 
       <form onSubmit={sendData} className="p-6 mt-10 bg-gray-200 rounded-md shadow-md w-80 sm:w-96">
         <h2 className="mb-5 text-3xl font-bold text-center text-purple-600">Envia tus datos por la mixnet</h2>
         <input
