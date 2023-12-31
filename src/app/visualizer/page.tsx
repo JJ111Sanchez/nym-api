@@ -1,41 +1,52 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import PocketBase from 'pocketbase';
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import {
+ createNymMixnetClient,
+ NymMixnetClient,
+} from '@nymproject/sdk-full-fat';
 
+const nymApiUrl = "https://validator.nymtech.net/api";
 
-interface FormularioData {
-    name: string;
-    email: string;
-    // Añade aquí el resto de los campos según sea necesario
-  }
-
-  const DataViewComponent = () => {
-    const [data, setData] = useState<FormularioData[]>([]); 
-
-
- // Función para obtener todos los registros de la colección 'formulario'
- const fetchData = async () => {
-    try {
-      const result = await axios.get<FormularioData[]>('https://cyberguenza.pockethost.io/api/collections/formulario/records'); // Usa la interfaz para tipar la respuesta de tu API
-      setData(result.data);
-    } catch (error) {
-      console.error('Error al recuperar los datos:', error);
-    }
-  };
+const DataViewComponent = () => {
+  const [nym, setNym] = useState<NymMixnetClient>();
 
   useEffect(() => {
-    fetchData();
+    const init = async () => {
+      const client = await createNymMixnetClient();
+      setNym(client);
+
+      // Iniciar el cliente y conectar a un gateway
+      await client?.client.start({
+        clientId: crypto.randomUUID(),
+        nymApiUrl,
+        forceTls: true, // forzar WSS
+      });
+    };
+
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('https://cyberguenza.pockethost.io/api/collections/formulario/records');
+        
+        // Enviar los datos a través de la mixnet de Nym
+        await nym?.client.send(result.data);
+
+        console.log(result.data);
+      } catch (error) {
+        console.error('Error al recuperar los datos:', error);
+      }
+    };
+
+    init().then(fetchData);
+
+    return () => {
+      nym?.client.stop();
+    };
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center">
-      {data.map((item, index) => (
-        <div key={index} className="m-4 shadow-lg bg-gradient-to-r from-black via-orange-500 to-black rounded-lg overflow-hidden max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
-          <h2 className="text-2xl text-white p-4">{item.name}</h2>
-          <p className="text-lg text-white p-4">{item.email}</p>
-        </div>
-      ))}
+    <div>
+      <p>Verifica la consola para ver los datos.</p>
     </div>
   );
 };
