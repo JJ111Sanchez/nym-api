@@ -54,6 +54,9 @@ const Suscribete = () => {
         };
 
         // Aquí iría la lógica para enviar el payload usando el SDK de Nym
+        // Por ahora, solo mostraremos un mensaje en consola
+        console.log("Datos a enviar:", payload);
+        // TODO: Implementar la lógica de envío cuando el SDK esté listo
     };
 
     return (

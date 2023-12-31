@@ -12,9 +12,10 @@ export default function Hero() {
         layout="fill"
         objectFit="cover"
         quality={100}
+        
       />
       <div className="absolute z-10 text-center">
-        <h1 className="text-6xl text-fuchsia-800 font-bold mb-4">Luchando por la privacidad</h1>
+        <h1 className="text-6xl text-fuchsia-800 font-bold mb-4 animate-pulse">Luchando por la privacidad</h1>
         <h2 className="text-4xl text-white mb-8">Subtítulo</h2>
         <button
           onMouseEnter={() => setHover(true)}
