@@ -1,11 +1,12 @@
 'use client'
-import React, { useState, useEffect } from "react";
-import PocketBase from 'pocketbase';
+import React, { useState, useEffect } from "react"; // Importa React y dos hooks (useState y useEffect) de la biblioteca de React.
+import PocketBase from 'pocketbase'; // Importa la clase PocketBase para interactuar con la base de datos PocketBase.
+import Image from 'next/image';
 import {
  createNymMixnetClient,
  NymMixnetClient,
  Payload,
-} from "@nymproject/sdk-full-fat";
+} from "@nymproject/sdk-full-fat"; // Importa funciones y tipos del SDK de Nym para trabajar con la mixnet.
 
 const nymApiUrl = "https://validator.nymtech.net/api";
 
@@ -83,9 +84,21 @@ const App = () => {
  };
 
  return (
+
+ 
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-800">
+       <div>
+     
+       <Image src="/nym.png"
+        width={100}
+        height={100}
+alt="sizas">
+
+</Image>
+    
+</div>
       <form onSubmit={sendData} className="p-6 mt-10 bg-gray-200 rounded-md shadow-md w-80 sm:w-96">
-        <h2 className="mb-5 text-3xl font-bold text-center text-purple-600">Formulario Cyberpunk</h2>
+        <h2 className="mb-5 text-3xl font-bold text-center text-purple-600">Envia tus datos por la mixnet</h2>
         <input
           type="text"
           placeholder="Nombre"

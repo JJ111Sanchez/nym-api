@@ -9,7 +9,7 @@ const Header = () => {
     <header className="bg-gray-900 text-green-400 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <a href="/"><h1 className="text-3xl font-bold">
-          Cyber<span className="text-pink-600">Punk</span>Header
+         Nym <span className="text-pink-600"> x </span> Next Js
         </h1></a>
         <div className="md:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>

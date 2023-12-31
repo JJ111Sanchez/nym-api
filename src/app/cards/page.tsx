@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 export default function Card() {
   const cards = [
-    { title: 'Título 1', subtitle: 'Subtítulo 1', image: '/1.jpg' },
-    { title: 'Título 2', subtitle: 'Subtítulo 2', image: '/OIG 2.jpeg' },
-    { title: 'Título 3', subtitle: 'Subtítulo 3', image: '/OIG.jpeg' },
+    { title: 'Nym Sdk', subtitle: 'Subtítulo 1', image: '/1.jpg' },
+    { title: 'Host pocket', subtitle: 'Subtítulo 2', image: '/OIG 2.jpeg' },
+    { title: 'NextJs', subtitle: 'Subtítulo 3', image: '/OIG.jpeg' },
   ]
 
   return (
