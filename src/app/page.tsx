@@ -12,10 +12,11 @@ const App = () => {
 
   <main>
     <Hero />
-    <Card />
-    <Comments />
-   <Suscribete  />
-   <DataViewComponent />
+    
+    
+   
+   <DataViewComponent 
+   />
 
    
     </main>

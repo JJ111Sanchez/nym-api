@@ -17,7 +17,7 @@ export default function Hero() {
         
       />
       <div className="absolute z-10 text-center">
-        <h1 className="text-6xl text-fuchsia-800 font-bold mb-4 animate-pulse">Luchando por la privacidad</h1>
+        <h1 className="text-6xl text-teal-800 font-bold mb-4 animate-pulse">Luchando por la privacidad</h1>
        
       
       </div>

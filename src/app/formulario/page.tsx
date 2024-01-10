@@ -108,7 +108,7 @@ alt="sizas">
 </div>
       {statusMessage && <p className="text-white  text-center text-2xl font-bold pt-4 pb-4 ">{statusMessage}</p>} 
       <form onSubmit={sendData} className="p-6 mt-10 bg-gray-200 rounded-md shadow-md w-80 sm:w-96">
-        <h2 className="mb-5 text-3xl font-bold text-center text-purple-600">Envia tus datos por la mixnet</h2>
+        <h2 className="mb-5 text-3xl font-bold text-center text-teal-700">Envia tus datos por la mixnet</h2>
         <input
           type="text"
           placeholder="Nombre"
@@ -151,7 +151,7 @@ alt="sizas">
           onChange={(e) => setMessage(e.target.value)}
           className="w-full px-3 py-2 mb-5 text-black placeholder-gray-500 bg-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600"
         />
-        <button type="submit" className="w-full px-3 py-2 text-white bg-purple-600 rounded-md hover:bg-purple-700">Enviar</button>
+        <button type="submit" className="w-full px-3 py-2 text-white bg-teal-600 rounded-md hover:bg-teal-800">Enviar</button>
       </form>
     </div>
      

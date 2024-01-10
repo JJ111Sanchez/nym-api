@@ -58,7 +58,7 @@ const Visualizer = () => {
 
   return (
    
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-8 pb-8">
 
       <h1 className=" text-center pb-4 pt-4 text-3xl text-teal-500"> Datos ingresados vía mixnet </h1>
   <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5  shadow-lg shadow-teal-700">

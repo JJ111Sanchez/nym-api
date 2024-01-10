@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 
 
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -9,7 +10,7 @@ const Header = () => {
     <header className="bg-gray-900 text-green-400 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <a href="/"><h1 className="text-3xl font-bold">
-         Nym <span className="text-pink-600"> x </span> Next Js
+         Nym <span className="text-teal-800"> x </span> Next Js
         </h1></a>
         <div className="md:hidden">
           <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -29,10 +30,10 @@ const Header = () => {
         </div>
         <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block`}>
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-            <li><a href="#" className="hover:text-pink-600">Inicio</a></li>
-            <li><a href="/formulario" className="hover:text-pink-600">Formulario</a></li>
-            <li><a href="/visualizer" className="hover:text-pink-600">Visualizador</a></li>
-            <li><a href="#" className="hover:text-pink-600">Contacto</a></li>
+            
+            <li><a href="/formulario" className="hover:text-teal-800">Formulario</a></li>
+            <li><a href="/visualizer" className="hover:text-teal-800">Visualizador</a></li>
+            <li><a href="https://www.daoariwas.xyz/" target="_blank" className="hover:text-teal-800">Daoariwas</a></li>
           </ul>
         </nav>
       </div>
