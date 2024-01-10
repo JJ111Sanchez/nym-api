@@ -1,40 +1,54 @@
 'use client'
-import { useEffect, useState } from 'react';
-import PocketBase from 'pocketbase'; // Importa la clase PocketBase para interactuar con la base de datos PocketBase.
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import {
+ createNymMixnetClient,
+ NymMixnetClient,
+} from '@nymproject/sdk-full-fat';
 
+const nymApiUrl = "https://validator.nymtech.net/api";
 
-const DataTable = () => {
-  const [data, setData] = useState([]);
+const Visualizer = () => {
+  const [nym, setNym] = useState<NymMixnetClient>();
 
   useEffect(() => {
-    // Asegúrate de reemplazar la URL con la ruta correcta a tu API
-    fetch('https://cyberguenza.pockethost.io/api/collections/formulario/records/id')
-      .then(response => response.json())
-      .then(data => setData(data.records));
+    const init = async () => {
+      const client = await createNymMixnetClient();
+      setNym(client);
+
+      // Iniciar el cliente y conectar a un gateway
+      await client?.client.start({
+        clientId: crypto.randomUUID(),
+        nymApiUrl,
+        forceTls: true, // forzar WSS
+      });
+    };
+
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('https://cyberguenza.pockethost.io/api/collections/formulario/records');
+        
+        // Enviar los datos a través de la mixnet de Nym
+        await nym?.client.send(result.data);
+
+        console.log(result.data);
+      } catch (error) {
+        console.error('Error al recuperar los datos:', error);
+      }
+    };
+
+    init().then(fetchData);
+
+    return () => {
+      nym?.client.stop();
+    };
   }, []);
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white table-auto text-black">
-        <thead>
-          <tr>
-            {/* Asegúrate de ajustar estos encabezados según los campos en tus datos */}
-            <th className="px-4 py-2">Campo 1</th>
-            <th className="px-4 py-2">Campo 2</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((record, index) => (
-            <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
-              {/* Asegúrate de ajustar estos campos según los campos en tus datos */}
-              <td className="px-4 py-2 border">uno</td>
-              <td className="px-4 py-2 border">dos</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div >
+    <div>
+      <p>Verifica la consola para ver los datos.</p>
+    </div>
   );
 };
 
-export default DataTable;
+export default Visualizer;
