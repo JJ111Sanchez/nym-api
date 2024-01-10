@@ -31,7 +31,7 @@ const Header = () => {
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <li><a href="#" className="hover:text-pink-600">Inicio</a></li>
             <li><a href="/formulario" className="hover:text-pink-600">Formulario</a></li>
-            <li><a href="/viuslaizer" className="hover:text-pink-600">Visualizador</a></li>
+            <li><a href="/visualizer" className="hover:text-pink-600">Visualizador</a></li>
             <li><a href="#" className="hover:text-pink-600">Contacto</a></li>
           </ul>
         </nav>
