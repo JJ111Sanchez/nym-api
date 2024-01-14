@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <div className="relative h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
       <Image
-        src="/OIG.jpeg"
+        src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*8vXGJVqZPoIcq3ehaJdHag.png"
         alt="Imagen de fondo"
         layout="fill"
         objectFit="cover"
@@ -17,7 +17,7 @@ export default function Hero() {
         
       />
       <div className="absolute z-10 text-center">
-        <h1 className="text-6xl text-teal-800 font-bold mb-4 animate-pulse">Luchando por la privacidad</h1>
+        {/* <h1 className="text-6xl text-teal-800 font-bold mb-4 animate-pulse">Luchando por la privacidad</h1> */}
        
       
       </div>
