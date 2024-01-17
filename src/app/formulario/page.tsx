@@ -9,7 +9,6 @@ import Image from 'next/image';
 import {
  createNymMixnetClient,
  NymMixnetClient,
- Payload,
 } from "@nymproject/sdk-full-fat";
 
 // URL de la API de Nym para interactuar con la red mixnet.
@@ -19,16 +18,6 @@ const nymApiUrl = "https://validator.nymtech.net/api";
 const pb = new PocketBase('https://cyberguenza.pockethost.io');
 
 
-
-
-
-// Define la estructura de la configuración para enviar datos.
-interface SendConfig {
- payload: Payload; // Datos del mensaje a enviar.
- recipient: string; // Dirección del destinatario.
- customData?: any; // Datos adicionales, definir un tipo más específico si es posible.
-}
-
 // Componente principal de la aplicación.
 const App = () => {
  // Estado para almacenar la instancia del cliente Nym.
@@ -37,7 +26,6 @@ const App = () => {
  const [email, setEmail] = useState("");
  const [name, setName] = useState("");
  const [lastName, setLastName] = useState("");
- const [gender, setGender] = useState("");
  const [message, setMessage] = useState("");
  // Estado para almacenar el mensaje de estado del envío.
  const [statusMessage, setStatusMessage] = useState("");
@@ -61,10 +49,7 @@ const App = () => {
  useEffect(() => {
     init();
     // Función de limpieza para detener el cliente Nym al desmontar el componente.
-    return () => {
-      nym?.client.stop();
-    };
- }, []);
+ },[] );
 
  // Función para manejar el envío de datos a través del formulario.
  const sendData = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -85,15 +70,6 @@ const App = () => {
      message: message
    };
 
-   // Configuración de envío con los datos y el destinatario.
-   const payload: SendConfig = {
-    payload: {
-      mimeType: "text/plain", // Tipo de contenido del mensaje.
-      message: Buffer.from(JSON.stringify(data)).toString('base64'), // Convierte los datos a una cadena en base64.
-    },
-    recipient: 'recipient@example.com', // Dirección del destinatario (reemplazar con el destinatario real).
-    customData: {}, // Datos adicionales si es necesario.
-  };
 
    // Intenta crear un nuevo registro en la base de datos con los datos del formulario.
    try {
@@ -105,7 +81,6 @@ const App = () => {
      setEmail("");
      setName("");
      setLastName("");
-     setGender("");
      setMessage("");
    } catch (error) {
      // Captura y registra errores al intentar crear el registro.
