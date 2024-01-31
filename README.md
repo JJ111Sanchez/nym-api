@@ -20,9 +20,7 @@ Nym envia la información por diferentes nodos, mezclando los paquetes de navega
 
 [Axios](https://www.npmjs.com/package/axios)
 
-[PocketBase JavaScript SDK
-](https://www.npmjs.com/package/pocketbase)
-
+[PocketBase JavaScript SDK](https://www.npmjs.com/package/pocketbase)
 
 [Tailwind](https://tailwindcss.com/)
 
