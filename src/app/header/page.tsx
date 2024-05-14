@@ -33,7 +33,7 @@ const Header = () => {
             
             <li><a href="/formulario" className="hover:text-teal-800">Formulario</a></li>
             <li><a href="/visualizer" className="hover:text-teal-800">Visualizador</a></li>
-            <li><a href="https://www.daoariwas.xyz/" target="_blank" className="hover:text-teal-800">Daoariwas</a></li>
+            <li><a href="https://www.daoariwas.xyz/" target="_blank" className="hover:text-teal-800">KE MONDA</a></li>
           </ul>
         </nav>
       </div>

@@ -7,7 +7,7 @@ export default function Hero() {
   const [hover, setHover] = useState(false)
 
   return (
-    <div className="relative h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+    <div className="relative h-screen flex items-center justify-center bg-gradient-to-r from-purple-900 via-pink-500 to-red-500">
       <Image
         src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*8vXGJVqZPoIcq3ehaJdHag.png"
         alt="Imagen de fondo"
